@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Report PDV</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, select, textarea { width: 300px; padding: 5px; margin-bottom: 15px; }
+    select { width: 315px; }
+    h2, h3 { color: #2c3e50; }
+    button { padding: 10px 20px; margin-top: 20px; background-color: #2980b9; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #1f6391; }
+  </style>
+</head>
+<body>
+  <h2>Report Settimanale Punto Vendita</h2>
+  <form onsubmit="sendEmail(); return false;">
+
+    <label for="puntoVendita">Punto Vendita:</label>
+    <select id="puntoVendita" required style="width: 320px;">
+      <option value="">-- Seleziona --</option>
+      <option>FANO</option>
+      <option>MONSANO</option>
+      <option>OSIMO</option>
+      <option>MACERATA</option>
+      <option>CIVITANOVA</option>
+      <option>PESARO</option>
+    </select>
+
+    <label for="deltaMese">DELTA MESE €:</label>
+    <input type="number" id="deltaMese">
+
+    <label for="deltaPrMedio">DELTA PR.MEDIO €:</label>
+    <input type="number" id="deltaPrMedio">
+
+    <label for="deltaSmartwatch">DELTA SMARTWATCH €:</label>
+    <input type="number" id="deltaSmartwatch">
+
+    <h3 style="margin-top: 30px; color: #333;">Prodotti Focus</h3>
+
+    <label for="smartwatch">Smartwatch:</label>
+    <input type="number" id="smartwatch">
+
+    <label for="motorola">Motorola:</label>
+    <input type="number" id="motorola">
+
+    <label for="tcl">TCL:</label>
+    <input type="number" id="tcl">
+
+    <h3 style="margin-top: 30px; color: #333;">ATTACH PED</h3>
+
+    <label for="servizi">Servizi:</label>
+    <select id="servizi">
+      <option>ROSSO</option><option>ARANCIO</option><option>GIALLO</option><option>VERDINO</option><option>VERDE</option>
+    </select>
+
+    <label for="fastskin">Fastskin:</label>
+    <select id="fastskin">
+      <option>ROSSO</option><option>ARANCIO</option><option>GIALLO</option><option>VERDINO</option><option>VERDE</option>
+    </select>
+
+    <label for="accessori">Accessori:</label>
+    <select id="accessori">
+      <option>ROSSO</option><option>ARANCIO</option><option>GIALLO</option><option>VERDINO</option><option>VERDE</option>
+    </select>
+
+    <label for="cleanvir">Cleanvir:</label>
+    <select id="cleanvir">
+      <option>ROSSO</option><option>ARANCIO</option><option>GIALLO</option><option>VERDINO</option><option>VERDE</option>
+    </select>
+
+    <label for="packPromo">Pack Promo:</label>
+    <select id="packPromo">
+      <option>ROSSO</option><option>ARANCIO</option><option>GIALLO</option><option>VERDINO</option><option>VERDE</option>
+    </select>
+
+    <label for="estIphone">Estensioni iPhone:</label>
+    <select id="estIphone">
+      <option>ROSSO</option><option>ARANCIO</option><option>GIALLO</option><option>VERDINO</option><option>VERDE</option>
+    </select>
+
+    <label for="estWatch">Estensioni Watch:</label>
+    <select id="estWatch">
+      <option>ROSSO</option><option>ARANCIO</option><option>GIALLO</option><option>VERDINO</option><option>VERDE</option>
+    </select>
+
+    <button type="submit">Invia Report</button>
+  </form>
+
+  <script>
+    function sendEmail() {
+      let mailto = "mailto:d.pavoni@dml-italia.com";
+      let subject = "AVANZAMENTO SETTORE PED";
+      let body = "";
+
+      body += "Punto Vendita: " + document.getElementById("puntoVendita").value + "%0D%0A";
+      body += "DELTA MESE €: " + document.getElementById("deltaMese").value + "%0D%0A";
+      body += "DELTA PR.MEDIO €: " + document.getElementById("deltaPrMedio").value + "%0D%0A";
+      body += "DELTA SMARTWATCH €: " + document.getElementById("deltaSmartwatch").value + "%0D%0A%0D%0A";
+
+      body += "Prodotti Focus:%0D%0A";
+      body += "Smartwatch: " + document.getElementById("smartwatch").value + "%0D%0A";
+      body += "Motorola: " + document.getElementById("motorola").value + "%0D%0A";
+      body += "TCL: " + document.getElementById("tcl").value + "%0D%0A%0D%0A";
+
+      body += "ATTACH PED:%0D%0A";
+      body += "Servizi: " + document.getElementById("servizi").value + "%0D%0A";
+      body += "Fastskin: " + document.getElementById("fastskin").value + "%0D%0A";
+      body += "Accessori: " + document.getElementById("accessori").value + "%0D%0A";
+      body += "Cleanvir: " + document.getElementById("cleanvir").value + "%0D%0A";
+      body += "Pack Promo: " + document.getElementById("packPromo").value + "%0D%0A";
+      body += "Estensioni iPhone: " + document.getElementById("estIphone").value + "%0D%0A";
+      body += "Estensioni Watch: " + document.getElementById("estWatch").value + "%0D%0A";
+
+      window.location.href = mailto + "?subject=" + subject + "&body=" + body;
+    }
+  </script>
+</body>
+</html>
